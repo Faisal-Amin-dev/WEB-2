@@ -39,10 +39,18 @@ class MahasiswaModel {
         return mysqli_query($this->conn, $query);
     }
 
-    // Eksekusi eliminasi rekaman data mahasiswa dari basis data
+    //Eksekusi eliminasi rekaman data mahasiswa dari basis data
     public function deleteMahasiswa($id) {
         $query = "DELETE FROM mahasiswa WHERE id='$id'";
         return mysqli_query($this->conn, $query);
+    }
+    // Di dalam class UserModel atau MahasiswaModel
+    public function getProfileByUsername($username) {
+        $query = "SELECT * FROM mahasiswa WHERE nim = ? OR email = ? LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $username, $username);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
     }
 }
 ?>

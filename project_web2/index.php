@@ -82,6 +82,27 @@ elseif ($action === 'hapus_mahasiswa' && isset($_GET['id'])) {
     $mahasiswaController = new MahasiswaController($conn);
     $mahasiswaController->delete($_GET['id']);
 }
+elseif ($action === 'kelas_mahasiswa') {
+    require_once 'controller/MahasiswaController.php';
+    $mahasiswaController = new MahasiswaController($conn);
+    $mahasiswaController->viewKelas(); // Method baru untuk melihat kelas
+}
+elseif ($action === 'jadwal_mahasiswa') {
+    require_once 'controller/MahasiswaController.php';
+    $mahasiswaController = new MahasiswaController($conn);
+    $mahasiswaController->viewJadwal(); // Method baru untuk melihat jadwal
+}
+// Tambahkan di dalam index.php Anda
+elseif ($action === 'kelas_mahasiswa') {
+    require_once 'controller/MahasiswaController.php';
+    $mahasiswaController = new MahasiswaController($conn);
+    $mahasiswaController->viewKelas(); // Method baru untuk melihat kelas
+}
+elseif ($action === 'jadwal_mahasiswa') {
+    require_once 'controller/MahasiswaController.php';
+    $mahasiswaController = new MahasiswaController($conn);
+    $mahasiswaController->viewJadwal(); // Method baru untuk melihat jadwal
+}
 // Titik Akhir Fallback (Default Route)
 else {
     require_once 'controller/AuthController.php';
